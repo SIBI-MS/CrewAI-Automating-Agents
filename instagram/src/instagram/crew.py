@@ -5,13 +5,20 @@ from crewai.project import CrewBase, agent, crew, task
 # from instagram.tools.custom_tool import MyCustomTool
 
 # Check our tools documentations for more information on how to use them
-# from crewai_tools import SerperDevTool
+from crewai_tools import SerperDevTool
 
 @CrewBase
 class InstagramCrew():
 	"""Instagram crew"""
 	agents_config = 'config/agents.yaml'
 	tasks_config = 'config/tasks.yaml'
+ 
+ 
+	@agent
+	def market_researcher(self)->Agent:
+     return Agent(
+		 config=self.agents_config['market_researcher']
+	 )
 
 	@agent
 	def researcher(self) -> Agent:
